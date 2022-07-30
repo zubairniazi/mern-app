@@ -6,7 +6,11 @@ const Home = () => {
   const [workouts, setWorkouts] = useState(null);
 
   const handleAddWorkout = (workout) => {
-    setWorkouts([...workouts, { ...workout }]);
+    setWorkouts([{ ...workout }, ...workouts]);
+  };
+
+  const handleWorkoutDeleted = (id) => {
+    setWorkouts(workouts.filter((w) => w._id !== id));
   };
 
   useEffect(() => {
@@ -29,7 +33,11 @@ const Home = () => {
       <div className='flex flex-col space-y-6 flex-1'>
         {workouts &&
           workouts.map((workout) => (
-            <WorkoutDetails key={workout._id} workout={workout} />
+            <WorkoutDetails
+              key={workout._id}
+              workout={workout}
+              workoutDeleted={handleWorkoutDeleted}
+            />
           ))}
       </div>
       <div className='md:w-1/3'>

@@ -45,7 +45,7 @@ const WorkoutForm = ({ handleAddWorkout }) => {
 
       <form className='flex flex-col space-y-4' onSubmit={handleSubmit}>
         <div className='flex flex-col'>
-          <label className='text-sm text-gray-400 mb-1'>Title</label>
+          <label className='text-sm text-gray-400 mb-1'>Exercise Title</label>
           <input
             type='text'
             className='bg-gray-50 p-2 shadow'
