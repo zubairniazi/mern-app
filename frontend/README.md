@@ -8,6 +8,16 @@ Workout Buddy allows you to add, view and delete exercises.
 npm i
 ```
 
+### Configure Environments
+
+Create `.env.local` file and add below code
+
+```
+REACT_APP_API_URL=http://localhost:5000
+```
+
+Note: Above url represents the api url that you can get after configuring backend app.
+
 ### Start App
 
 ```
