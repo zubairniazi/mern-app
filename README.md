@@ -1,6 +1,6 @@
 # MERN App
 
-A tool to perfom CRUD implementation in MERN.
+A tool to perfom CRUD operations in MERN.
 
 There are two directories:
 
