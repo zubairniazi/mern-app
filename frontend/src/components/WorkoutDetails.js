@@ -6,7 +6,10 @@ const WorkoutDetails = ({
   workoutDeleted,
 }) => {
   const handleOnDelete = async () => {
-    const response = await fetch(`/api/workouts/${_id}`, { method: 'DELETE' });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/api/workouts/${_id}`,
+      { method: 'DELETE' }
+    );
     // const json = response.json();
 
     if (response.ok) {
