@@ -7,7 +7,7 @@ const workoutRoutes = require('./routes/workout');
 
 // express app
 const app = express();
-app.use(cors({ origin: process.env.CORS_ORIGIN }));
+app.use(cors({ origin: process.env.CORS_ORIGIN?.split(',') ?? '*' }));
 
 // middleware
 app.use(express.json());
