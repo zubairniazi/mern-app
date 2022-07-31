@@ -40,6 +40,19 @@ const fetchWorkout = async (req, res) => {
 const createWorkout = async (req, res) => {
   const { title, reps, load } = req.body;
 
+  let errors = {};
+
+  if (!title) errors.title = 'Title Field is required';
+
+  if (!reps) errors.reps = 'Reps Field is required';
+
+  if (!load) errors.load = 'Load Field is required';
+
+  if (Object.keys(errors).length)
+    return res
+      .status(400)
+      .json({ message: 'Please fill all the required fields.', errors });
+
   try {
     const workout = await Workout.create({ title, reps, load });
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 const WorkoutDetails = ({
   workout: { _id, title, reps, load, createdAt },
@@ -25,14 +26,19 @@ const WorkoutDetails = ({
           <strong>Reps: </strong>
           {reps}
         </p>
-        <p className='text-sm'>{createdAt}</p>
+        <p className='text-sm'>
+          {formatDistanceToNow(new Date(createdAt), { addSuffix: true })}
+        </p>
       </div>
-      <span
-        className='text-red-400 text-sm cursor-pointer'
-        onClick={handleOnDelete}
-      >
-        x
-      </span>
+
+      <div>
+        <span
+          className='material-symbols-outlined text-red-400 cursor-pointer'
+          onClick={handleOnDelete}
+        >
+          delete
+        </span>
+      </div>
     </div>
   );
 };

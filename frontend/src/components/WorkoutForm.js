@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 
 const WorkoutForm = ({ handleAddWorkout }) => {
   const [title, setTitle] = useState('');
-  const [load, setLoad] = useState(0);
-  const [reps, setReps] = useState(0);
+  const [load, setLoad] = useState('');
+  const [reps, setReps] = useState('');
 
   const [error, setError] = useState(null);
+  const [errors, setErrors] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    resetForm();
 
     let workout = { title, load, reps };
 
@@ -24,6 +24,7 @@ const WorkoutForm = ({ handleAddWorkout }) => {
 
     if (!response.ok) {
       setError(json.message);
+      setErrors(json.errors);
     }
 
     if (response.ok) {
@@ -33,10 +34,11 @@ const WorkoutForm = ({ handleAddWorkout }) => {
   };
 
   const resetForm = () => {
+    setErrors(null);
     setError(null);
     setTitle('');
-    setLoad(0);
-    setReps(0);
+    setLoad('');
+    setReps('');
   };
 
   return (
@@ -48,30 +50,45 @@ const WorkoutForm = ({ handleAddWorkout }) => {
           <label className='text-sm text-gray-400 mb-1'>Exercise Title</label>
           <input
             type='text'
-            className='bg-gray-50 p-2 shadow'
+            className={`bg-gray-50 p-2 shadow ${
+              errors && errors.title ? 'border border-red-400 rounded' : ''
+            }`}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
+          <span className='text-sm text-red-400 mt-1'>
+            {errors && errors.title}
+          </span>
         </div>
 
         <div className='flex flex-col'>
           <label className='text-sm text-gray-400 mb-1'>Load (kg)</label>
           <input
             type='number'
-            className='bg-gray-50 p-2 shadow'
+            className={`bg-gray-50 p-2 shadow ${
+              errors && errors.title ? 'border border-red-400 rounded' : ''
+            }`}
             value={load}
             onChange={(e) => setLoad(e.target.value)}
           />
+          <span className='text-sm text-red-400 mt-1'>
+            {errors && errors.load}
+          </span>
         </div>
 
         <div className='flex flex-col'>
           <label className='text-sm text-gray-400 mb-1'>Reps</label>
           <input
             type='number'
-            className='bg-gray-50 p-2 shadow'
+            className={`bg-gray-50 p-2 shadow ${
+              errors && errors.title ? 'border border-red-400 rounded' : ''
+            }`}
             value={reps}
             onChange={(e) => setReps(e.target.value)}
           />
+          <span className='text-sm text-red-400 mt-1'>
+            {errors && errors.reps}
+          </span>
         </div>
 
         <div className='flex flex-col'>
