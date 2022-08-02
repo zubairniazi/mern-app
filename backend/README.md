@@ -6,15 +6,7 @@ npm i
 ```
 
 ### Configure Environments
-Create `.env` file and add below content:
-
-```
-PORT=5000
-MONGO_URI=YOUR_MONGO_DB_URI
-CORS_ORIGIN=
-```
-
-Note: The value of `CORS_ORIGIN` will be client's app URL like `example.com`.
+Rename `.env.exmaple` as `.env` and put config keys.
 
 ### Run Server
 ```

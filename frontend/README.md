@@ -10,13 +10,7 @@ npm i
 
 ### Configure Environments
 
-Create `.env.local` file and add below code
-
-```
-REACT_APP_API_URL=
-```
-
-Note: Above url represents the api url that you can get after configuring backend app (like api.example.com).
+Rename `.env.exmaple` as `.env` and put config keys.
 
 ### Start App
 
