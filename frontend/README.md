@@ -13,10 +13,10 @@ npm i
 Create `.env.local` file and add below code
 
 ```
-REACT_APP_API_URL=http://localhost:5000
+REACT_APP_API_URL=
 ```
 
-Note: Above url represents the api url that you can get after configuring backend app.
+Note: Above url represents the api url that you can get after configuring backend app (like api.example.com).
 
 ### Start App
 
