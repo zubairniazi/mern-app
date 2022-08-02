@@ -2,6 +2,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
 import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 function App() {
   return (
@@ -11,7 +13,9 @@ function App() {
 
         <div className='max-w-5xl mx-auto py-5 px-3'>
           <Routes>
-            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/register' element={<Register />} />
+            <Route path='/' element={<Home />} exact />
           </Routes>
         </div>
       </Router>
