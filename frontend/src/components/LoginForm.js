@@ -1,45 +1,17 @@
 import React, { useState } from 'react';
 
-const LoginForm = ({ handleUserLoggedIn }) => {
+import useLogin from '../hooks/useLogin';
+
+const LoginForm = () => {
+  const { login, error, errors } = useLogin();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
-  const [error, setError] = useState(null);
-  const [errors, setErrors] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    let user = { email, password };
-
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/api/user/login`,
-      {
-        method: 'POST',
-        body: JSON.stringify(user),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    const json = await response.json();
-
-    if (!response.ok) {
-      setError(json.message);
-      setErrors(json.errors);
-    }
-
-    if (response.ok) {
-      handleUserLoggedIn && handleUserLoggedIn(json.data);
-      resetForm();
-    }
-  };
-
-  const resetForm = () => {
-    setErrors(null);
-    setError(null);
-    setEmail('');
-    setPassword('');
+    await login(email, password);
   };
 
   return (
@@ -65,7 +37,7 @@ const LoginForm = ({ handleUserLoggedIn }) => {
         <div className='flex flex-col'>
           <label className='text-sm text-gray-400 mb-1'>Password</label>
           <input
-            type='text'
+            type='password'
             className={`bg-gray-50 p-2 shadow ${
               errors && errors.password ? 'border border-red-400 rounded' : ''
             }`}

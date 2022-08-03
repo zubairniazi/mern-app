@@ -36,7 +36,7 @@ const RegisterForm = () => {
         <div className='flex flex-col'>
           <label className='text-sm text-gray-400 mb-1'>Password</label>
           <input
-            type='text'
+            type='password'
             className={`bg-gray-50 p-2 shadow ${
               errors && errors.password ? 'border border-red-400 rounded' : ''
             }`}
